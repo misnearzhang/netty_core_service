@@ -1,0 +1,33 @@
+option java_package = "com.syuct.core_service.protoc";
+option java_outer_classname = "TransMessage";
+
+message Message {
+    required Head head = 1;
+    optional string body = 2;//body optional when i want to send a heartbeat etc.
+}
+
+message Head {
+        required type type = 1;
+        required status status = 2;
+        required string uid = 3;
+        required int64 time = 4;
+    }
+    enum type{
+        USER = 1;
+        SYSTEM = 2;
+        RESPONSE = 3;
+        PING = 4;
+        PONG = 5;
+        HANDSHAKE = 6;
+        HANDSHAKERESPONSE = 7;
+    }
+    enum status{
+        REQ = 1;
+        OK = 2;
+        OFFLINE = 3;
+        HANDSHAKEFAIL = 4;
+        ERROR = 5;
+        DECODEERR = 6;
+        DISCARD = 7;
+        OTHERLOGIN = 8;
+    }

@@ -1,0 +1,33 @@
+#服务器端口
+server:
+  port: 8080
+spring:
+  application:
+    name: core_service
+  redis:
+    host: 192.168.2.252
+    port: 6379
+
+systemconfig:
+  #listening port
+  tcpPort: 3000
+  #heartbeat time
+  idleReadTime: 205
+  idleWriteTime: 200
+  idleFailure-count: 3
+  #parse ThreadPool
+  threadCorePoolSize: 5
+  threadMaximumPoolSize: 10
+  threadKeepAliveTime: 10
+
+  threadRetransFirstTime: 10
+  threadRetransSecondTime: 10
+  threadRetransThirdTime: 10
+
+  kafkaConfig:
+     kafkaGroupId: iot-server
+     kafkaServerCluster: 192.168.4.11:9092,192.168.4.12:9092,192.168.4.13:9092,192.168.4.14:9092,192.168.4.15:9092,192.168.4.16:9092
+     kafkaProducerRetries: 0
+     kafkaProducerBatchSize: 4096
+     kafkaProducerLinger: 1
+     kafkaProducerBufferMemory: 40960
