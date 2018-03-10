@@ -39,9 +39,10 @@ public class TestTCPClient implements Runnable{
 					ch.pipeline().addLast(new ProtobufVarint32FrameDecoder());
 					ch.pipeline().addLast("protobufDecoder", new ProtobufDecoder(
 							TransMessage.Message.getDefaultInstance()));
+					ch.pipeline().addLast(new TestTCPHandler());
 					ch.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
 					ch.pipeline().addLast("protobufEncoder", new ProtobufEncoder());
-					ch.pipeline().addLast(new TestTCPHandler());
+
 				}
 			});
 			ChannelFuture f=b.connect("127.0.0.1", 3000).sync();

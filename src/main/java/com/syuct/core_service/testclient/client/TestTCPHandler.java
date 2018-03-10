@@ -15,8 +15,8 @@ import java.util.UUID;
 public class TestTCPHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        super.channelInactive(ctx);
+    public void channelInactive(ChannelHandlerContext ctx) {
+        System.out.println("grbi9");
     }
 
     @Override
@@ -58,7 +58,6 @@ public class TestTCPHandler extends ChannelInboundHandlerAdapter {
                     System.out.println(message.toString());
             }
         }
-        super.channelRead(ctx, msg);
     }
 
     @Override
@@ -79,6 +78,5 @@ public class TestTCPHandler extends ChannelInboundHandlerAdapter {
                 ctx.channel().close();
             }
         }
-        super.userEventTriggered(ctx, evt);
     }
 }
